@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :teams
 
   if Setting.has_module?(:home)
-    root to: "home#index"
+    root to: "topics#index"
   else
     root to: "topics#index"
   end
@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     registrations: :account,
     sessions: :sessions,
     passwords: :passwords,
+    confirmations: :confirmations,
     omniauth_callbacks: "auth/omniauth_callbacks"
   }
 

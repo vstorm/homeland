@@ -29,8 +29,7 @@ class AccountController < Devise::RegistrationsController
     resource.email = params[resource_name][:email]
     if verify_complex_captcha?(resource) && resource.save
       Rails.cache.write(cache_key, sign_up_count + 1)
-
-      sign_in(resource_name, resource)
+      # sign_in(resource_name, resource)
     end
   end
 

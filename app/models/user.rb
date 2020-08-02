@@ -17,7 +17,7 @@ class User < ApplicationRecord
                         current_password password password_confirmation _rucaptcha]
 
   devise :database_authenticatable, :registerable, :recoverable, :lockable,
-         :rememberable, :trackable, :validatable, :omniauthable
+         :rememberable, :trackable, :validatable, :omniauthable, :confirmable
 
   has_one :profile, dependent: :destroy
 
@@ -39,8 +39,6 @@ class User < ApplicationRecord
                     presence: true,
                     uniqueness: { case_sensitive: false }
   validates :name, length: { maximum: 20 }
-
-  after_commit :send_welcome_mail, on: :create
 
   scope :hot, -> { order(replies_count: :desc).order(topics_count: :desc) }
   scope :without_team, -> { where(type: nil) }
@@ -189,4 +187,5 @@ class User < ApplicationRecord
     end
     false
   end
+
 end

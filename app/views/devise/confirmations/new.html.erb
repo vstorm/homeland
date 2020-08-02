@@ -1,19 +1,30 @@
-<% title_tag 'Resend confirmation instructions' %>
+<% title_tag t('users.not_recieve_confirm_mail') %>
 
-<h2>Resend confirmation instructions</h2>
+<div class="row">
+  <div class="col"></div>
+  <div class="col-md-6">
+    <div class="card card-lg">
+      <div class="card-body">
+        <div class="card-title"><%= t('users.not_recieve_confirm_mail') %></div>
 
-<%= form_for resource, as: resource_name, url: confirmation_path(resource_name), method: :post do |f| %>
-  <%= f.error_notification %>
-  <%= f.full_error :confirmation_token %>
+        <%= form_for resource, as: resource_name, url: confirmation_path(resource_name), method: :post do |f| %>
+          <%= render "shared/error_messages", target: resource %>
+          <div class="form-group">
+            <%= f.text_field :email, type: :email, class: "form-control form-control-lg", placeholder: t("activerecord.attributes.user.email") %>
+            <p class="form-text text-muted">此功能将会发送一个激活账号的特别链接到你的邮箱，通过该链接可以激活邮件。</p>
+          </div>
+          <div class="form-group">
+            <div class="input-group input-group-lg">
+              <%= render "/shared/captcha_input" %>
+            </div>
+          </div>
 
-  <div class="form-group">
-    <%= f.label :email %>
-    <%= f.text_field :email, class: "form-control" %>
+          <div class="form-actions">
+            <%= f.submit "重新发送激活邮件", class: "btn btn-lg btn-block btn-primary", 'data-disable-with' => t("common.submitting") %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Resend confirmation instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+  <div class="col"></div>
+</div>
