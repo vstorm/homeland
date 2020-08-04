@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     sessions: :sessions,
     passwords: :passwords,
     confirmations: :confirmations,
+    unlocks: :unlocks,
     omniauth_callbacks: "auth/omniauth_callbacks"
   }
 

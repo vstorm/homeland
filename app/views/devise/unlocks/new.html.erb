@@ -14,6 +14,12 @@
             <%= f.text_field :email, class: "form-control form-control-lg", placeholder: "Email" %>
           </div>
 
+          <div class="form-group">
+            <div class="input-group input-group-lg">
+              <%= render "/shared/captcha_input" %>
+            </div>
+          </div>
+
           <div class="form-actions">
             <%= f.submit "重新发送解锁邮件", class: 'btn btn-primary btn-lg btn-block' %>
           </div>
