@@ -39,6 +39,7 @@ class User < ApplicationRecord
                     presence: true,
                     uniqueness: { case_sensitive: false }
   validates :name, length: { maximum: 20 }
+  validate :is_valid_invitation_code
 
   scope :hot, -> { order(replies_count: :desc).order(topics_count: :desc) }
   scope :without_team, -> { where(type: nil) }
@@ -47,6 +48,7 @@ class User < ApplicationRecord
            :avatar, :state, :tagline, :github, :website, :location,
            :location_id, :twitter, :team_users_count, :created_at, :updated_at)
   }
+
 
   def self.find_by_email(email)
     fetch_by_uniq_keys(email: email)
@@ -186,6 +188,13 @@ class User < ApplicationRecord
       return true if saved_change_to_attribute?(key)
     end
     false
+  end
+
+  private
+  def is_valid_invitation_code
+    if !invitation_code.present? || !InvitationCode.verify(invitation_code)
+      errors.add("邀请码：", "请填写正确的邀请码")
+    end
   end
 
 end

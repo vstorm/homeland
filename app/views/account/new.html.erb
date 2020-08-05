@@ -22,7 +22,7 @@
           </div>
           <div class="form-group">
             <div class="custom-control custom-checkbox custom-checkbox-lg">
-              <%= f.check_box :email_public, checked: true, class: "custom-control-input" %>
+              <%= f.check_box :email_public, checked: false , class: "custom-control-input" %>
               <label for="user_email_public"  class="custom-control-label"><%= t("activerecord.attributes.user.email_public") %></label>
             </div>
           </div>
@@ -31,6 +31,9 @@
           </div>
           <div class="form-group">
             <%= f.password_field :password_confirmation, class: "form-control form-control-lg", placeholder: t("activerecord.attributes.user.password_confirmation") %>
+          </div>
+          <div class="form-group">
+            <%= f.text_field :invitation_code, class: "form-control form-control-lg", placeholder: t("activerecord.attributes.user.invitation_code") %>
           </div>
           <div class="form-group">
             <div class="input-group input-group-lg">

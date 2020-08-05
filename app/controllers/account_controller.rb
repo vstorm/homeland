@@ -24,9 +24,16 @@ class AccountController < Devise::RegistrationsController
       return render status: 403, plain: message
     end
 
+    # Invitation Code
+    # invitation_code = params[resource_name][:invitation_code]
+    # if ! InvitationCode.verify(invitation_code)
+    #   resource.errors.add("邀请码：", "请填写正确的邀请码")
+    #   return
+    # end
     build_resource(sign_up_params)
     resource.login = params[resource_name][:login]
     resource.email = params[resource_name][:email]
+    resource.invitation_code = params[resource_name][:invitation_code]
     if verify_complex_captcha?(resource) && resource.save
       Rails.cache.write(cache_key, sign_up_count + 1)
       # sign_in(resource_name, resource)

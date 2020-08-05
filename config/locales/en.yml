@@ -27,6 +27,7 @@ en:
         bio: "Bio"
         password: "Password"
         password_confirmation: "Password Confirmation"
+        invitation_code: "Invitation Code"
         website: "Personal Website"
         last_logined_at: "Last signed in at"
         tagline: "Tagline"
