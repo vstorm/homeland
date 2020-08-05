@@ -59,13 +59,13 @@ class BaseUploader < CarrierWave::Uploader::Base
 
     def aliyun_thumb_key(version_name)
       case version_name
-      when "large" then "resize,w_1920"
-      when "lg"    then "resize,w_192,h_192,m_fill"
-      when "md"    then "resize,w_96,h_96,m_fill"
-      when "sm"    then "resize,w_48,h_48,m_fill"
-      when "xs"    then "resize,w_32,h_32,m_fill"
+      when "large" then "resize,w_1920/format,jpg/interlace,1"
+      when "lg"    then "resize,w_192,h_192,m_fill/format,jpg/interlace,1"
+      when "md"    then "resize,w_96,h_96,m_fill/format,jpg/interlace,1"
+      when "sm"    then "resize,w_48,h_48,m_fill/format,jpg/interlace,1"
+      when "xs"    then "resize,w_32,h_32,m_fill/format,jpg/interlace,1"
       else
-        "resize,w_32,h_32,m_fill"
+        "resize,w_32,h_32,m_fill/format,jpg/interlace,1"
       end
     end
 
