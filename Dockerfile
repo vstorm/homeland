@@ -15,8 +15,14 @@ RUN mkdir -p /home/app &&\
 
 ADD Gemfile Gemfile.lock package.json yarn.lock /home/app/homeland/
 RUN gem install puma
-RUN bundle config set deployment 'true' && bundle install && yarn &&\
-  find /home/app/homeland/vendor/bundle -name tmp -type d -exec rm -rf {} +
+RUN bundle config mirror.https://rubygems.org https://gems.ruby-china.com
+RUN bundle config set deployment 'true'
+RUN bundle install
+RUN rm -rf ./node_module
+RUN yarn --netwrok -timeout 100000
+RUN yarn config set sass-binary-site http://npm.taobao.org/mirrors/node-sass
+RUN yarn
+RUN find /home/app/homeland/vendor/bundle -name tmp -type d -exec rm -rf {} +
 ADD . /home/app/homeland
 ADD ./config/nginx/ /etc/nginx
 
