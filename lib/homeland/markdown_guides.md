@@ -139,7 +139,7 @@ zh-CN:
 
 ### 视频插入
 
-目前支持 Youtube 和 Youku 两家的视频插入，你只需要复制视频播放页面，浏览器地址栏的网页 URL 地址，并粘贴到话题／回复文本框，提交以后将自动转换成视频播放器。
+目前支持 Youtube，B站 和 Youku 的视频插入，你只需要复制视频播放页面，浏览器地址栏的网页 URL 地址，并粘贴到话题／回复文本框，提交以后将自动转换成视频播放器。
 
 #### 例如
 
@@ -154,5 +154,9 @@ https://vimeo.com/199770305
 **Youku**
 
 http://v.youku.com/v_show/id_XMjQzMTY1MDk3Ng==.html
+
+**Bilibili**
+
+https://www.bilibili.com/video/BV1zC4y1b72X
 
 ···
